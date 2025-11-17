@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FWI Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #007bff, #00c6ff);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: #ffffff;
+            width: 380px;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 9px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .result-box {
+            background: #f1f7ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 18px;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            border-left: 5px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 FWI Prediction</h1>
+
+        <form action="{{ url_for('predict_datapoint') }}" method="post">
+            <input type="number" step="any" name="Temperature" placeholder="Temperature (°C)" required>
+            <input type="number" step="any" name="RH" placeholder="Relative Humidity (%)" required>
+            <input type="number" step="any" name="Ws" placeholder="Wind Speed (km/h)" required>
+            <input type="number" step="any" name="Rain" placeholder="Rain (mm)" required>
+            <input type="number" step="any" name="FFMC" placeholder="FFMC Value" required>
+            <input type="number" step="any" name="DMC" placeholder="DMC Value" required>
+            <input type="number" step="any" name="ISI" placeholder="ISI Value" required>
+            <input type="text" name="Classes" placeholder="Classes" required>
+            <input type="text" name="Region" placeholder="Region" required>
+
+            <button type="submit">Predict FWI</button>
+        </form>
+
+        {% if results is not none %}
+        <div class="result-box">
+            🔥 Predicted FWI: {{ results }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
