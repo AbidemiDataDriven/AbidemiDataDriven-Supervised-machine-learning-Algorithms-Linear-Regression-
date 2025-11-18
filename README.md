@@ -121,9 +121,6 @@ fire-weather-index-app/
 
 <img width="1274" height="845" alt="Screenshot 2025-11-17 at 3 10 06 PM" src="https://github.com/user-attachments/assets/5626d0e8-8455-4b7c-ad4b-c6d3b74b0243" />
 
-
-
 https://abidemidatadriven-supervised-machine-1c28.onrender.com/predictdata
-
 
 
